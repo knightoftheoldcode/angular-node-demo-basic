@@ -1,0 +1,21 @@
+{
+  "name": "squire",
+  "version": "0.1.0",
+  "description": "Yet another blogging engine with bold dreams.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Knight of the Old Code",
+  "dependencies": {
+    "body-parser": "~1.5.2",
+    "express": "~4.7.2",
+    "markdown-it": "^4.4.0",
+    "method-override": "~2.1.2",
+    "morgan": "~1.2.2",
+    "pg": "^4.4.2",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^3.9.0"
+  }
+}

@@ -1,0 +1,69 @@
+<!-- index.html -->
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="squire">
+<head>
+    <!-- META -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+    <title>Squire</title>
+
+    <!-- SCROLLS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+    <style>
+        html                    { overflow-y:scroll; }
+        body                    { padding-top:50px; }
+        #todo-list              { margin-bottom:30px; }
+    </style>
+
+    <!-- SPELLS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.6/angular-sanitize.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/4.4.0/markdown-it.min.js"></script>
+    <script src="core.js"></script>
+
+</head>
+<!-- SET THE CONTROLLER AND GET ALL TODOS -->
+<body ng-controller="PostController as postList">
+    <div class="container">
+
+        <!-- HEADER AND TODO COUNT -->
+        <div class="jumbotron text-center">
+            <h1>Posts: <span class="label label-info">{{ postList.posts.length }}</span></h1>
+        </div>
+
+        <!-- TODO LIST -->
+        <div id="post-list" class="row">
+            <div class="col-sm-12">
+
+                <!-- LOOP OVER THE TODOS IN $scope.todos -->
+                <div style="margin-top: 20px; border-top: 3px solid gray;" ng-repeat="post in postList.posts">
+                    <div ng-bind-html="post.output"></div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- FORM TO CREATE TODOS -->
+        <div id="user-form" class="row">
+            <div class="col-sm-8 col-sm-offset-2 text-center">
+                <form name="user-form" ng-submit="postList.createPost()">
+                    <div class="form-group">
+                        
+                        <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+                        <textarea id="source" class="form-control input-lg" placeholder="This *is* some __markdown__!" ng-model="postList.source"></textarea>
+                    </div>
+
+                    <!-- createToDo() WILL CREATE NEW TODOS -->
+                    <button type="submit" class="btn btn-primary btn-lg">Add</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
